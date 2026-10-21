@@ -75,8 +75,9 @@ function resolveLink(href, base) {
 /** Host key used for per-host politeness (host + effective port). */
 function hostKey(raw) {
   const url = new URL(raw);
-  const port = url.port || DEFAULT_PORTS[url.protocol] || '';
-  return `${url.hostname.toLowerCase()}${port ? ':' + port : ''}`;
+  // URL.port is '' for default ports (the parser strips them), so only
+  // non-default ports appear in the key.
+  return `${url.hostname.toLowerCase()}${url.port ? ':' + url.port : ''}`;
 }
 
 module.exports = { normalizeUrl, isHttpUrl, resolveLink, hostKey };
