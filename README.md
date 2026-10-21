@@ -20,13 +20,13 @@ Most crawler tutorials stop at "fetch links recursively." A crawler you can actu
 
 ```bash
 # crawl up to 200 pages, 2 deep, 5 parallel workers
-node bin/crawl.js https://example.com --depth 2 --pages 200
+node cli/crawl.js https://example.com --depth 2 --pages 200
 
 # also write sitemap.xml; follow links to other hosts
-node bin/crawl.js https://example.com --sitemap --external
+node cli/crawl.js https://example.com --sitemap --external
 
 # tighter politeness for a small server
-node bin/crawl.js https://example.com --delay 2000 --concurrency 2
+node cli/crawl.js https://example.com --delay 2000 --concurrency 2
 ```
 
 | Flag | Default | Meaning |
@@ -71,7 +71,7 @@ src/
   reporter.js    JSON report builder, sitemap.xml writer
   url-utils.js   URL canonicalization
   index.js       public API
-bin/crawl.js     CLI
+cli/crawl.js     CLI
 tests/           node:test suites
 ```
 
